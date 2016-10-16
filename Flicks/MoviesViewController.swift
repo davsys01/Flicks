@@ -8,6 +8,7 @@
 
 import UIKit
 import AFNetworking
+import FTIndicator
 
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -17,6 +18,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        FTIndicator.showProgressWithmessage("Loading...")
         
         moviesTV.dataSource = self
         moviesTV.delegate = self
@@ -36,6 +39,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                     //NSLog("response: \(responseDictionary)")
                     self.movies = responseDictionary["results"] as? [NSDictionary]
                     self.moviesTV.reloadData()
+                    FTIndicator.dismissProgress()
                 }
             }
         });

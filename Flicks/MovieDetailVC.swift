@@ -8,6 +8,7 @@
 
 import UIKit
 import AFNetworking
+import FTIndicator
 
 class MovieDetailVC: UIViewController {
 
@@ -22,6 +23,8 @@ class MovieDetailVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        FTIndicator.showProgressWithmessage("Loading...")
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = URL(string:"https://api.themoviedb.org/3/movie/\(String(movieID))?api_key=\(apiKey)")
@@ -52,6 +55,7 @@ class MovieDetailVC: UIViewController {
                         self.posterImage.image = nil
                     }
                 }
+                FTIndicator.dismissProgress()
             }
         });
         task.resume()
