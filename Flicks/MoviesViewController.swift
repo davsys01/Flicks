@@ -17,15 +17,24 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     var movies: [NSDictionary]?
+    var refreshControl: UIRefreshControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.getMoviesData), for: UIControlEvents.valueChanged)
+        moviesTV.insertSubview(refreshControl, at: 0)
 
         FTIndicator.showProgressWithmessage("Loading...")
         
         moviesTV.dataSource = self
         moviesTV.delegate = self
         
+        getMoviesData()
+    }
+    
+    func getMoviesData() -> Void {
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = URL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
         let request = URLRequest(url: url!)
@@ -46,6 +55,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                         //NSLog("response: \(responseDictionary)")
                         self.movies = responseDictionary["results"] as? [NSDictionary]
                         self.moviesTV.reloadData()
+                        self.refreshControl.endRefreshing()
                         FTIndicator.dismissProgress()
                     }
                 }
