@@ -1,8 +1,8 @@
 //
-//  MoviesViewController.swift
+//  TopRatedVC.swift
 //  Flicks
 //
-//  Created by David Bocardo on 10/15/16.
+//  Created by David Bocardo on 10/16/16.
 //  Copyright © 2016 David Bocardo. All rights reserved.
 //
 
@@ -10,14 +10,14 @@ import UIKit
 import AFNetworking
 import FTIndicator
 
-class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TopRatedVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var moviesTV: UITableView!
     @IBOutlet weak var errorView: UIView!
-    
+
     var movies: [NSDictionary]?
     var refreshControl: UIRefreshControl!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +34,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     func getMoviesData() -> Void {
         FTIndicator.showProgressWithmessage("Loading...")
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = URL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
+        let url = URL(string:"https://api.themoviedb.org/3/movie/top_rated?api_key=\(apiKey)")
         let request = URLRequest(url: url!)
         let session = URLSession(
             configuration: URLSessionConfiguration.default,
@@ -87,7 +87,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
-
+        
         if let posterPath = movie["poster_path"] as? String {
             let baseURL = "http://image.tmdb.org/t/p/w500"
             let imageURL = URL(string: baseURL + posterPath)
@@ -104,7 +104,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         moviesTV.deselectRow(at: indexPath, animated: false)
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "detailSegue") {
             let detailVC = segue.destination as! MovieDetailVC

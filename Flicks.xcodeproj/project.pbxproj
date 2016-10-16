@@ -14,6 +14,9 @@
 		639BFF941DB3231800534D14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639BFF921DB3231800534D14 /* LaunchScreen.storyboard */; };
 		639BFF9C1DB3240F00534D14 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639BFF9B1DB3240F00534D14 /* MoviesViewController.swift */; };
 		639BFFA01DB32D1300534D14 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639BFF9F1DB32D1300534D14 /* MovieCell.swift */; };
+		63E60A0F1DB43CCE00E679C4 /* now_playing.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E60A0E1DB43CCE00E679C4 /* now_playing.png */; };
+		63E60A111DB43D0600E679C4 /* top_rated.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E60A101DB43D0600E679C4 /* top_rated.png */; };
+		63E60A131DB43ED800E679C4 /* TopRatedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E60A121DB43ED800E679C4 /* TopRatedVC.swift */; };
 		68541519D8018DBAE0E95280 /* Pods_Flicks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A9D6AD183BC0B0FA5FD619 /* Pods_Flicks.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +30,9 @@
 		639BFF951DB3231800534D14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		639BFF9B1DB3240F00534D14 /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		639BFF9F1DB32D1300534D14 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		63E60A0E1DB43CCE00E679C4 /* now_playing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = now_playing.png; sourceTree = "<group>"; };
+		63E60A101DB43D0600E679C4 /* top_rated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_rated.png; sourceTree = "<group>"; };
+		63E60A121DB43ED800E679C4 /* TopRatedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopRatedVC.swift; sourceTree = "<group>"; };
 		907D82C3D295FEDBA1BCE667 /* Pods-Flicks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flicks.release.xcconfig"; path = "Pods/Target Support Files/Pods-Flicks/Pods-Flicks.release.xcconfig"; sourceTree = "<group>"; };
 		995569D8B41955343FC6CA41 /* Pods-Flicks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flicks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Flicks/Pods-Flicks.debug.xcconfig"; sourceTree = "<group>"; };
 		B2A9D6AD183BC0B0FA5FD619 /* Pods_Flicks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flicks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,8 +79,11 @@
 		639BFF881DB3231800534D14 /* Flicks */ = {
 			isa = PBXGroup;
 			children = (
+				63E60A0E1DB43CCE00E679C4 /* now_playing.png */,
+				63E60A101DB43D0600E679C4 /* top_rated.png */,
 				639BFF891DB3231800534D14 /* AppDelegate.swift */,
 				639BFF8D1DB3231800534D14 /* Main.storyboard */,
+				63E60A121DB43ED800E679C4 /* TopRatedVC.swift */,
 				639BFF901DB3231800534D14 /* Assets.xcassets */,
 				639BFF921DB3231800534D14 /* LaunchScreen.storyboard */,
 				639BFF951DB3231800534D14 /* Info.plist */,
@@ -159,6 +168,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				639BFF941DB3231800534D14 /* LaunchScreen.storyboard in Resources */,
+				63E60A0F1DB43CCE00E679C4 /* now_playing.png in Resources */,
+				63E60A111DB43D0600E679C4 /* top_rated.png in Resources */,
 				639BFF911DB3231800534D14 /* Assets.xcassets in Resources */,
 				639BFF8F1DB3231800534D14 /* Main.storyboard in Resources */,
 			);
@@ -222,6 +233,7 @@
 				639BFF8A1DB3231800534D14 /* AppDelegate.swift in Sources */,
 				639BFF9C1DB3240F00534D14 /* MoviesViewController.swift in Sources */,
 				6324F79C1DB33B460095805E /* MovieDetailVC.swift in Sources */,
+				63E60A131DB43ED800E679C4 /* TopRatedVC.swift in Sources */,
 				639BFFA01DB32D1300534D14 /* MovieCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
