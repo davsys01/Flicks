@@ -18,6 +18,8 @@ class MovieDetailVC: UIViewController {
     @IBOutlet weak var movieReleaseDate: UILabel!
     @IBOutlet weak var movieOverview: UILabel!
     
+    @IBOutlet weak var errorView: UIView!
+    
     var movieID: Int!
     var movie: NSDictionary?
 
@@ -36,6 +38,11 @@ class MovieDetailVC: UIViewController {
         )
         
         let task : URLSessionDataTask = session.dataTask(with: request,completionHandler: { (dataOrNil, response, error) in
+            if error != nil {
+                FTIndicator.dismissProgress()
+                self.errorView.isHidden = false
+                Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.hideErrorView), userInfo: nil, repeats: false)
+            }
             if let data = dataOrNil {
                 if let responseDictionary = try! JSONSerialization.jsonObject(with: data, options:[]) as? NSDictionary {
                     self.movie = responseDictionary as NSDictionary
@@ -59,6 +66,10 @@ class MovieDetailVC: UIViewController {
             }
         });
         task.resume()
+    }
+    
+    func hideErrorView() -> Void {
+        self.errorView.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {

@@ -13,6 +13,8 @@ import FTIndicator
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var moviesTV: UITableView!
+    @IBOutlet weak var errorView: UIView!
+    
     
     var movies: [NSDictionary]?
 
@@ -34,18 +36,28 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         )
         
         let task : URLSessionDataTask = session.dataTask(with: request,completionHandler: { (dataOrNil, response, error) in
-            if let data = dataOrNil {
-                if let responseDictionary = try! JSONSerialization.jsonObject(with: data, options:[]) as? NSDictionary {
-                    //NSLog("response: \(responseDictionary)")
-                    self.movies = responseDictionary["results"] as? [NSDictionary]
-                    self.moviesTV.reloadData()
-                    FTIndicator.dismissProgress()
+            if error != nil {
+                FTIndicator.dismissProgress()
+                self.errorView.isHidden = false
+                Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.hideErrorView), userInfo: nil, repeats: false)
+            } else {
+                if let data = dataOrNil {
+                    if let responseDictionary = try! JSONSerialization.jsonObject(with: data, options:[]) as? NSDictionary {
+                        //NSLog("response: \(responseDictionary)")
+                        self.movies = responseDictionary["results"] as? [NSDictionary]
+                        self.moviesTV.reloadData()
+                        FTIndicator.dismissProgress()
+                    }
                 }
             }
         });
         task.resume()
     }
-
+    
+    func hideErrorView() -> Void {
+        self.errorView.isHidden = true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
